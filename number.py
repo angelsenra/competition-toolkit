@@ -83,16 +83,16 @@ def prime_generator():
     prev_primes = collections.deque([2, 3])
     yield from prev_primes
     x = 5
-    for i in cycle((2, 4)):
-        is_prime = True
+    for i in itertools.cycle((2, 4)):
+        is_prime_var = True
         limit = int(math.sqrt(x)) + 1
         for j in prev_primes:
             if j > limit:
                 break
             if not x % j:
-                is_prime = False
+                is_prime_var = False
                 break
-        if is_prime:
+        if is_prime_var:
             prev_primes.append(x)
             yield x
         x += i
@@ -132,5 +132,6 @@ def factors_until(m):
                 sieve[mult].add(i)
     return sieve
 
-cached_fact = functools.lru_cache(fact, max_size=None)
-cached_is_prime = functools.lru_cache(is_prime, max_size=None)
+
+cached_fact = functools.lru_cache(fact, maxsize=None)
+cached_is_prime = functools.lru_cache(is_prime, maxsize=None)
