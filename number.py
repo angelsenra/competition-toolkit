@@ -133,5 +133,5 @@ def factors_until(m):
     return sieve
 
 
-cached_fact = functools.lru_cache(fact, maxsize=None)
-cached_is_prime = functools.lru_cache(is_prime, maxsize=None)
+cached_fact = functools.lru_cache(maxsize=None)(fact)
+cached_is_prime = functools.lru_cache(maxsize=None)(is_prime)
